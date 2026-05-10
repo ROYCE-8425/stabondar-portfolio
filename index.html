@@ -81,9 +81,12 @@
 
   <!-- ═══════ HERO SECTION ═══════ -->
   <section class="hero section--full" id="hero">
-    <!-- Video Background -->
+    <!-- Dual Video Background for seamless crossfade -->
     <div class="hero__video-wrap">
-      <video class="hero__video" id="hero-video" autoplay muted loop playsinline>
+      <video class="hero__video hero__video--a" id="hero-video-a" muted playsinline preload="auto">
+        <source src="assets/videos/hero-bg.mp4" type="video/mp4">
+      </video>
+      <video class="hero__video hero__video--b" id="hero-video-b" muted playsinline preload="auto" style="opacity: 0;">
         <source src="assets/videos/hero-bg.mp4" type="video/mp4">
       </video>
       <div class="hero__video-overlay"></div>

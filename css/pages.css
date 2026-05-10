@@ -66,11 +66,16 @@
 }
 
 .hero__video {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
 }
+
+.hero__video--a { z-index: 1; }
+.hero__video--b { z-index: 0; }
 
 .hero__video-overlay {
   position: absolute;

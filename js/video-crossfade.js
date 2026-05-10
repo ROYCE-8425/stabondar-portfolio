@@ -1,41 +1,96 @@
 /**
- * Video Loop Crossfade — Smooth transition when video restarts
- * Fades video to black near the end, then fades back in after loop
+ * Dual-Video Crossfade — Seamless loop with zero jitter
+ * Uses two <video> elements and requestAnimationFrame for
+ * frame-perfect smooth opacity transitions.
  */
 (function () {
   'use strict';
 
-  const video = document.getElementById('hero-video');
-  if (!video) return;
+  const videoA = document.getElementById('hero-video-a');
+  const videoB = document.getElementById('hero-video-b');
+  if (!videoA || !videoB) return;
 
-  const FADE_DURATION = 1.5; // seconds before end to start fade
-  const FADE_IN_DURATION = 0.8; // seconds to fade back in
+  const CROSSFADE_SECONDS = 2.5; // how long the crossfade takes
+  let activeVideo = videoA;
+  let standbyVideo = videoB;
+  let isCrossfading = false;
+  let crossfadeStart = 0;
 
-  // CSS transition for smooth opacity changes
-  video.style.transition = 'opacity 0.8s ease-in-out';
+  // Start playing video A
+  function startPlayback() {
+    activeVideo.currentTime = 0;
+    activeVideo.style.opacity = '1';
+    standbyVideo.style.opacity = '0';
+    activeVideo.play().catch(() => {});
+  }
 
-  video.addEventListener('timeupdate', function () {
-    if (!video.duration || isNaN(video.duration)) return;
-
-    const timeLeft = video.duration - video.currentTime;
-
-    if (timeLeft <= FADE_DURATION) {
-      // Fade out progressively
-      const progress = timeLeft / FADE_DURATION;
-      video.style.opacity = Math.max(0, progress);
-    } else if (video.currentTime < FADE_IN_DURATION) {
-      // Fade in at the start
-      const progress = video.currentTime / FADE_IN_DURATION;
-      video.style.opacity = Math.min(1, progress);
-    } else {
-      video.style.opacity = 1;
-    }
+  // Wait for video to be ready
+  videoA.addEventListener('loadeddata', function () {
+    startPlayback();
+    // Pre-buffer standby video
+    standbyVideo.load();
   });
 
-  // Ensure smooth restart
-  video.addEventListener('seeking', function () {
-    if (video.currentTime < 0.1) {
-      video.style.opacity = 0;
+  // The main loop using requestAnimationFrame
+  function tick() {
+    requestAnimationFrame(tick);
+
+    if (!activeVideo.duration || isNaN(activeVideo.duration)) return;
+
+    const timeLeft = activeVideo.duration - activeVideo.currentTime;
+
+    // ── Start crossfade when near the end ──
+    if (timeLeft <= CROSSFADE_SECONDS && !isCrossfading) {
+      isCrossfading = true;
+      crossfadeStart = performance.now();
+
+      // Start standby video from beginning
+      standbyVideo.currentTime = 0;
+      standbyVideo.play().catch(() => {});
+    }
+
+    // ── Animate crossfade ──
+    if (isCrossfading) {
+      const elapsed = (performance.now() - crossfadeStart) / 1000;
+      const progress = Math.min(elapsed / CROSSFADE_SECONDS, 1);
+
+      // Smooth easing (ease-in-out cubic)
+      const eased = progress < 0.5
+        ? 4 * progress * progress * progress
+        : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+
+      activeVideo.style.opacity = String(1 - eased);
+      standbyVideo.style.opacity = String(eased);
+
+      // Crossfade complete — swap roles
+      if (progress >= 1) {
+        isCrossfading = false;
+
+        // Pause old active, it's now hidden
+        activeVideo.pause();
+        activeVideo.currentTime = 0;
+        activeVideo.style.opacity = '0';
+
+        // Swap
+        const temp = activeVideo;
+        activeVideo = standbyVideo;
+        standbyVideo = temp;
+
+        // Ensure active is fully visible
+        activeVideo.style.opacity = '1';
+      }
+    }
+  }
+
+  requestAnimationFrame(tick);
+
+  // Handle page visibility (pause/resume)
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) {
+      activeVideo.pause();
+      standbyVideo.pause();
+    } else {
+      activeVideo.play().catch(() => {});
     }
   });
 })();
