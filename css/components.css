@@ -532,34 +532,76 @@
   stroke-width: 1.5;
 }
 
-/* ══════════════ SOCIAL LINKS ══════════════ */
+/* ══════════════ SOCIAL LINKS — Icon Buttons ══════════════ */
 
 .social-links {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-4);
+  gap: var(--space-3);
 }
 
 .social-links a {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
+  padding: 10px 18px;
   font-size: var(--text-nav);
+  font-weight: var(--weight-medium);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--color-text-muted);
-  transition: color var(--transition-fast), text-shadow var(--transition-fast);
+  color: var(--color-text-primary);
+  background: rgba(0, 229, 255, 0.04);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  backdrop-filter: blur(8px);
+  transition: all var(--transition-normal);
 }
 
 .social-links a:hover {
   color: var(--color-accent);
-  text-shadow: var(--glow-text);
+  border-color: var(--color-accent);
+  background: rgba(0, 229, 255, 0.1);
+  box-shadow: var(--glow-sm);
+  transform: translateY(-2px);
+}
+
+.social-links a .icon {
+  width: 16px;
+  height: 16px;
+}
+
+.menu-overlay__socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
 }
 
 .menu-overlay__socials a {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
+  padding: 8px 16px;
+  font-size: var(--text-nav);
+  font-weight: var(--weight-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  transition: all var(--transition-normal);
+}
+
+.menu-overlay__socials a:hover {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+  background: rgba(0, 229, 255, 0.08);
+  box-shadow: var(--glow-sm);
+}
+
+.menu-overlay__socials a .icon {
+  width: 14px;
+  height: 14px;
 }
 
 /* ══════════════ DOT GRID ══════════════ */
