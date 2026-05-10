@@ -81,8 +81,15 @@
 
   <!-- ═══════ HERO SECTION ═══════ -->
   <section class="hero section--full" id="hero">
+    <!-- Video Background -->
+    <div class="hero__video-wrap">
+      <video class="hero__video" id="hero-video" autoplay muted loop playsinline>
+        <source src="assets/videos/hero-bg.mp4" type="video/mp4">
+      </video>
+      <div class="hero__video-overlay"></div>
+    </div>
+    <!-- Three.js particles on top -->
     <canvas class="hero__canvas" id="hero-canvas"></canvas>
-    <div class="dot-grid"></div>
 
     <div class="hero__content">
       <p class="hero__greeting reveal">Hello, I'm</p>
