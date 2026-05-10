@@ -15,6 +15,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
   <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js" defer></script>
+  <script src="https://unpkg.com/lucide@latest" defer></script>
 </head>
 <body class="is-loading has-custom-cursor">
 
@@ -48,9 +49,9 @@
     </ul>
     <div class="menu-overlay__footer">
       <div class="menu-overlay__socials">
-        <a href="https://zalo.me/0989819057" target="_blank">Zalo</a>
-        <a href="https://www.facebook.com/TRANNHUY.INF" target="_blank">Facebook</a>
-        <a href="https://t.me/Roycelowky" target="_blank">Telegram</a>
+        <a href="https://zalo.me/0989819057" target="_blank"><i data-lucide="phone" class="icon"></i> Zalo</a>
+        <a href="https://www.facebook.com/TRANNHUY.INF" target="_blank"><i data-lucide="facebook" class="icon"></i> Facebook</a>
+        <a href="https://t.me/Roycelowky" target="_blank"><i data-lucide="send" class="icon"></i> Telegram</a>
       </div>
     </div>
   </div>
@@ -143,6 +144,10 @@
         }
       }, 100);
     });
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => { if (typeof lucide !== 'undefined') lucide.createIcons(); });
+    window.addEventListener('load', () => { if (typeof lucide !== 'undefined') lucide.createIcons(); });
   </script>
 </body>
 </html>

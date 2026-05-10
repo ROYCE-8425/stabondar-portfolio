@@ -25,6 +25,9 @@
 
   <!-- Lenis Smooth Scroll -->
   <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js" defer></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest" defer></script>
 </head>
 <body class="is-loading has-custom-cursor">
 
@@ -71,10 +74,10 @@
     </ul>
     <div class="menu-overlay__footer">
       <div class="menu-overlay__socials">
-        <a href="https://zalo.me/0989819057" target="_blank">Zalo</a>
-        <a href="https://www.facebook.com/TRANNHUY.INF" target="_blank">Facebook</a>
-        <a href="https://t.me/Roycelowky" target="_blank">Telegram</a>
-        <a href="mailto:trannhuy8425@gmail.com">Gmail</a>
+        <a href="https://zalo.me/0989819057" target="_blank"><i data-lucide="phone" class="icon"></i> Zalo</a>
+        <a href="https://www.facebook.com/TRANNHUY.INF" target="_blank"><i data-lucide="facebook" class="icon"></i> Facebook</a>
+        <a href="https://t.me/Roycelowky" target="_blank"><i data-lucide="send" class="icon"></i> Telegram</a>
+        <a href="mailto:trannhuy8425@gmail.com"><i data-lucide="mail" class="icon"></i> Gmail</a>
       </div>
     </div>
   </div>
@@ -171,42 +174,42 @@
 
       <div class="skills__grid stagger-children">
         <div class="skill-card">
-          <span class="skill-card__icon">⚛️</span>
+          <span class="skill-card__icon"><i data-lucide="atom"></i></span>
           <h3 class="skill-card__name">React / Next.js</h3>
           <p class="skill-card__desc">Building fast, scalable SPAs and SSR apps</p>
         </div>
         <div class="skill-card">
-          <span class="skill-card__icon">🎨</span>
+          <span class="skill-card__icon"><i data-lucide="palette"></i></span>
           <h3 class="skill-card__name">CSS / Tailwind</h3>
           <p class="skill-card__desc">Responsive layouts & modern design systems</p>
         </div>
         <div class="skill-card">
-          <span class="skill-card__icon">✨</span>
+          <span class="skill-card__icon"><i data-lucide="sparkles"></i></span>
           <h3 class="skill-card__name">GSAP / Framer</h3>
           <p class="skill-card__desc">Smooth animations & micro-interactions</p>
         </div>
         <div class="skill-card">
-          <span class="skill-card__icon">🌐</span>
+          <span class="skill-card__icon"><i data-lucide="globe"></i></span>
           <h3 class="skill-card__name">Three.js / WebGL</h3>
           <p class="skill-card__desc">3D graphics & immersive web experiences</p>
         </div>
         <div class="skill-card">
-          <span class="skill-card__icon">📱</span>
+          <span class="skill-card__icon"><i data-lucide="smartphone"></i></span>
           <h3 class="skill-card__name">React Native</h3>
           <p class="skill-card__desc">Cross-platform mobile applications</p>
         </div>
         <div class="skill-card">
-          <span class="skill-card__icon">🐍</span>
+          <span class="skill-card__icon"><i data-lucide="terminal"></i></span>
           <h3 class="skill-card__name">Python / FastAPI</h3>
           <p class="skill-card__desc">Backend APIs & data processing</p>
         </div>
         <div class="skill-card">
-          <span class="skill-card__icon">🗄️</span>
+          <span class="skill-card__icon"><i data-lucide="database"></i></span>
           <h3 class="skill-card__name">PostgreSQL / MongoDB</h3>
           <p class="skill-card__desc">Database design & optimization</p>
         </div>
         <div class="skill-card">
-          <span class="skill-card__icon">🚀</span>
+          <span class="skill-card__icon"><i data-lucide="git-branch"></i></span>
           <h3 class="skill-card__name">Git / CI/CD</h3>
           <p class="skill-card__desc">Version control & deployment pipelines</p>
         </div>
@@ -386,11 +389,11 @@
       </div>
 
       <div class="social-links" style="margin-bottom: var(--space-8);">
-        <a href="https://zalo.me/0989819057" target="_blank">Zalo</a>
-        <a href="https://www.facebook.com/TRANNHUY.INF" target="_blank">Facebook</a>
-        <a href="https://t.me/Roycelowky" target="_blank">Telegram</a>
-        <a href="https://github.com/ROYCE-8425" target="_blank">GitHub</a>
-        <a href="mailto:trannhuy8425@gmail.com">Gmail</a>
+        <a href="https://zalo.me/0989819057" target="_blank"><i data-lucide="phone" class="icon"></i> Zalo</a>
+        <a href="https://www.facebook.com/TRANNHUY.INF" target="_blank"><i data-lucide="facebook" class="icon"></i> Facebook</a>
+        <a href="https://t.me/Roycelowky" target="_blank"><i data-lucide="send" class="icon"></i> Telegram</a>
+        <a href="https://github.com/ROYCE-8425" target="_blank"><i data-lucide="github" class="icon"></i> GitHub</a>
+        <a href="mailto:trannhuy8425@gmail.com"><i data-lucide="mail" class="icon"></i> Gmail</a>
       </div>
 
       <div class="footer__bottom">
@@ -411,5 +414,14 @@
   <script src="js/scroll-animations.js" defer></script>
   <script src="js/horizontal-scroll.js" defer></script>
   <script src="js/app.js" defer></script>
+  <script>
+    // Initialize Lucide Icons
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+    });
+    window.addEventListener('load', () => {
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+    });
+  </script>
 </body>
 </html>
