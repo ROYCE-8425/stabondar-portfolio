@@ -14,7 +14,7 @@
   let animationId;
 
   const PARTICLE_COUNT = 1000;
-  const TRAIL_COUNT = 150;
+  const TRAIL_COUNT = 40;
   let trailIndex = 0;
 
   const ACCENT = { r: 0, g: 0.898, b: 1.0 };
@@ -119,7 +119,7 @@
     trailGeo.setAttribute('color', new THREE.BufferAttribute(trailColors, 3));
 
     const trailMat = new THREE.PointsMaterial({
-      size: 3.5, // Larger for fire effect
+      size: 1.5, // Subtle trail effect
       map: accentTex,
       vertexColors: true,
       transparent: true,
@@ -189,17 +189,17 @@
       const tPos = trailParticles.geometry.attributes.position.array;
       const tCol = trailParticles.geometry.attributes.color.array;
 
-      // Spawn particles
-      const spawnCount = mouseMoved ? 3 : 1;
+      // Spawn particles only when moving
+      const spawnCount = mouseMoved ? 1 : 0;
       for (let k = 0; k < spawnCount; k++) {
         const i3 = trailIndex * 3;
-        tPos[i3] = targetPos.x + (Math.random() - 0.5) * 0.8;
-        tPos[i3 + 1] = targetPos.y + (Math.random() - 0.5) * 0.8;
+        tPos[i3] = targetPos.x + (Math.random() - 0.5) * 0.4;
+        tPos[i3 + 1] = targetPos.y + (Math.random() - 0.5) * 0.4;
         tPos[i3 + 2] = targetPos.z;
 
         // Bright Cyan -> Blue fire color
         tCol[i3] = 0.0;
-        tCol[i3 + 1] = 0.7 + Math.random() * 0.3; // Green channel (mixes to cyan)
+        tCol[i3 + 1] = 0.8 + Math.random() * 0.2; // Green channel (mixes to cyan)
         tCol[i3 + 2] = 1.0;
 
         trailIndex = (trailIndex + 1) % TRAIL_COUNT;
@@ -210,15 +210,15 @@
       for (let i = 0; i < TRAIL_COUNT; i++) {
         const i3 = i * 3;
         if (tCol[i3 + 2] > 0.01) {
-          // Drift up like flames
-          tPos[i3 + 1] += 0.15 + Math.random() * 0.05;
+          // Subtle drift up
+          tPos[i3 + 1] += 0.05 + Math.random() * 0.02;
           // Waver horizontally
-          tPos[i3] += Math.sin(frameCount * 0.1 + i) * 0.04;
+          tPos[i3] += Math.sin(frameCount * 0.1 + i) * 0.02;
 
-          // Fade out colors: green fades faster so cyan becomes deep blue before disappearing
-          tCol[i3] *= 0.90;
-          tCol[i3 + 1] *= 0.85; 
-          tCol[i3 + 2] *= 0.92;
+          // Fade out colors faster
+          tCol[i3] *= 0.80;
+          tCol[i3 + 1] *= 0.70; 
+          tCol[i3 + 2] *= 0.85;
         }
       }
 
