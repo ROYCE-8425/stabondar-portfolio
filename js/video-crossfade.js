@@ -10,6 +10,10 @@
   const videoB = document.getElementById('hero-video-b');
   if (!videoA || !videoB) return;
 
+  // Slow motion — 0.5x speed
+  videoA.playbackRate = 0.5;
+  videoB.playbackRate = 0.5;
+
   const CROSSFADE_SECONDS = 2.5; // how long the crossfade takes
   let activeVideo = videoA;
   let standbyVideo = videoB;
