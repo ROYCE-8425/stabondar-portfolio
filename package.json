@@ -1,0 +1,19 @@
+{
+  "name": "stabondar-portfolio",
+  "version": "1.0.0",
+  "description": "A premium dark-themed developer portfolio website inspired by [stabondar.com](https://www.stabondar.com/), featuring Three.js particle backgrounds, GSAP scroll-triggered animations, and a horizontal project showcase.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.6",
+    "express": "^4.22.1",
+    "jsonwebtoken": "^9.0.3",
+    "multer": "^1.4.5-lts.1"
+  }
+}

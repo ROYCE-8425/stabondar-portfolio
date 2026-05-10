@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CMS Admin | Portfolio</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <!-- Use Tailwind for rapid internal admin dashboard styling -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background-color: var(--color-bg-primary); color: var(--color-text-primary); font-family: var(--font-primary); }
+    .admin-card { background: rgba(10, 10, 15, 0.8); border: 1px solid var(--color-border); border-radius: var(--radius-base); padding: 1.5rem; }
+    .admin-input { width: 100%; padding: 0.75rem; background: rgba(0,0,0,0.5); border: 1px solid var(--color-border); color: white; border-radius: 4px; margin-top: 0.5rem; }
+    .admin-btn { padding: 0.5rem 1rem; background: var(--color-accent); color: black; border-radius: 4px; font-weight: bold; cursor: pointer; }
+    .admin-btn:hover { opacity: 0.9; }
+    .admin-btn-danger { background: #EB4330; color: white; }
+    #dashboard, #login-screen { display: none; }
+    .active { display: block !important; }
+  </style>
+</head>
+<body class="p-8">
+
+  <!-- LOGIN SCREEN -->
+  <div id="login-screen" class="max-w-md mx-auto mt-20 admin-card active">
+    <h1 class="text-2xl font-bold mb-6 text-center" style="color: var(--color-accent);">Admin Login</h1>
+    <form id="login-form">
+      <div class="mb-4">
+        <label>Username</label>
+        <input type="text" id="username" class="admin-input" required>
+      </div>
+      <div class="mb-6">
+        <label>Password</label>
+        <input type="password" id="password" class="admin-input" required>
+      </div>
+      <button type="submit" class="admin-btn w-full">Login</button>
+      <p id="login-error" class="text-red-500 mt-4 text-center hidden">Invalid credentials</p>
+    </form>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div id="dashboard" class="max-w-5xl mx-auto">
+    <div class="flex justify-between items-center mb-8">
+      <h1 class="text-3xl font-bold" style="color: var(--color-accent);">Portfolio CMS</h1>
+      <button id="logout-btn" class="admin-btn admin-btn-danger">Logout</button>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      
+      <!-- AVATAR & BIO -->
+      <div class="admin-card">
+        <h2 class="text-xl font-bold mb-4 border-b border-gray-700 pb-2">Global Settings</h2>
+        <form id="avatar-form" class="mb-6">
+          <label class="block mb-2">Update Avatar</label>
+          <div class="flex items-center gap-4">
+            <img id="current-avatar" src="" alt="Avatar" class="w-16 h-16 rounded-full object-cover border border-gray-600">
+            <input type="file" id="avatar-file" accept="image/*" class="admin-input flex-1">
+            <button type="submit" class="admin-btn">Upload</button>
+          </div>
+        </form>
+        <form id="settings-form">
+          <label class="block mb-2">Short Bio</label>
+          <textarea id="bio-input" class="admin-input h-24 mb-4"></textarea>
+          <button type="submit" class="admin-btn w-full">Save Settings</button>
+        </form>
+      </div>
+
+      <!-- SKILLS -->
+      <div class="admin-card">
+        <h2 class="text-xl font-bold mb-4 border-b border-gray-700 pb-2">Manage Skills</h2>
+        <form id="add-skill-form" class="mb-6 bg-black/30 p-4 rounded border border-gray-800">
+          <div class="grid grid-cols-1 gap-4 mb-4">
+            <div><label>Name</label><input type="text" id="skill-name" class="admin-input" placeholder="React / Next.js" required></div>
+            <div><label>Description</label><input type="text" id="skill-desc" class="admin-input" required></div>
+          </div>
+          <button type="submit" class="admin-btn w-full">Add Skill</button>
+        </form>
+        <div id="skills-list" class="space-y-3 max-h-64 overflow-y-auto pr-2">
+          <!-- Populated via JS -->
+        </div>
+      </div>
+
+      <!-- PROJECTS -->
+      <div class="admin-card md:col-span-2">
+        <h2 class="text-xl font-bold mb-4 border-b border-gray-700 pb-2">Manage Projects</h2>
+        <form id="add-project-form" class="mb-6 bg-black/30 p-4 rounded border border-gray-800">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+            <div><label>Title</label><input type="text" id="proj-title" class="admin-input" required></div>
+            <div><label>Tags (e.g. UI/UX Design)</label><input type="text" id="proj-tags" class="admin-input" required></div>
+            <div class="md:col-span-2"><label>Image URL (e.g. assets/images/project-01.png)</label><input type="text" id="proj-image" class="admin-input" required></div>
+          </div>
+          <button type="submit" class="admin-btn w-full">Add Project</button>
+        </form>
+        <div id="projects-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <!-- Populated via JS -->
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>

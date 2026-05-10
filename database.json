@@ -1,0 +1,87 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "trannhuy",
+      "password": "$2a$10$/UZbTOxxdxd/MH1FmkQHS.WO608wloHa3o9SN.ej05nJeSrLLPRF2"
+    }
+  ],
+  "settings": {
+    "avatar_url": "assets/images/avatar-1778435570639-957523250.jpeg",
+    "bio": "Creating digital experiences that blend technology and art."
+  },
+  "skills": [
+    {
+      "id": 1,
+      "icon": "atom",
+      "name": "React / Next.js",
+      "description": "Building fast, scalable SPAs and SSR apps",
+      "display_order": 0
+    },
+    {
+      "id": 2,
+      "icon": "palette",
+      "name": "CSS / Tailwind",
+      "description": "Responsive layouts & modern design systems",
+      "display_order": 1
+    },
+    {
+      "id": 3,
+      "icon": "sparkles",
+      "name": "GSAP / Framer",
+      "description": "Smooth animations & micro-interactions",
+      "display_order": 2
+    },
+    {
+      "id": 4,
+      "icon": "globe",
+      "name": "Three.js / WebGL",
+      "description": "3D graphics & immersive web experiences",
+      "display_order": 3
+    }
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "title": "E-Commerce Platform",
+      "tags": "Web Development",
+      "image_url": "assets/images/project-01.png",
+      "display_order": 1
+    },
+    {
+      "id": 2,
+      "title": "3D Product Viewer",
+      "tags": "WebGL / Three.js",
+      "image_url": "assets/images/project-02.png",
+      "display_order": 2
+    },
+    {
+      "id": 3,
+      "title": "Agency Website",
+      "tags": "Creative Development",
+      "image_url": "assets/images/project-03.png",
+      "display_order": 3
+    },
+    {
+      "id": 4,
+      "title": "Dashboard UI",
+      "tags": "UI/UX Design",
+      "image_url": "assets/images/project-04.png",
+      "display_order": 4
+    },
+    {
+      "id": 5,
+      "title": "Mobile App",
+      "tags": "React Native",
+      "image_url": "assets/images/project-05.png",
+      "display_order": 5
+    },
+    {
+      "id": 6,
+      "title": "Brand Identity",
+      "tags": "Design System",
+      "image_url": "assets/images/project-06.png",
+      "display_order": 6
+    }
+  ]
+}

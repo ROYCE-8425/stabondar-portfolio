@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  portfolio-cms:
+    build: .
+    container_name: portfolio-cms
+    ports:
+      - "8000:8000"
+    volumes:
+      # Map the database file so data isn't lost when container restarts
+      - ./database.json:/usr/src/app/database.json
+      # Map the image uploads folder so avatars aren't lost
+      - ./public/assets/images:/usr/src/app/public/assets/images
+    restart: always
+    environment:
+      - PORT=8000
+      - NODE_ENV=production
