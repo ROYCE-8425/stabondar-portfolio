@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Portfolio</title>
+  <meta name="description" content="Get in touch for creative development projects. Let's create something amazing together.">
+
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/pages.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js" defer></script>
+</head>
+<body class="is-loading has-custom-cursor">
+
+  <div class="custom-cursor" id="custom-cursor"></div>
+
+  <!-- LOADER -->
+  <div class="loader" id="loader">
+    <div class="loader__text" id="loader-text">Contact</div>
+    <div class="loader__counter" id="loader-counter">0%</div>
+    <div class="loader__bar">
+      <div class="loader__bar-inner" id="loader-bar"></div>
+    </div>
+  </div>
+
+  <!-- NAVIGATION -->
+  <nav class="nav" id="nav">
+    <a href="index.html" class="nav__logo">Port<span>folio</span></a>
+    <div class="nav__actions">
+      <button class="link-pill" id="menu-toggle" aria-label="Open menu">Menu</button>
+      <a href="contact.html" class="link-pill--accent link-pill">Let's Talk</a>
+    </div>
+  </nav>
+
+  <!-- MENU OVERLAY -->
+  <div class="menu-overlay" id="menu-overlay">
+    <button class="menu-overlay__close" id="menu-close" aria-label="Close menu">✕</button>
+    <ul class="menu-overlay__list">
+      <li class="menu-overlay__item"><a href="index.html" class="menu-overlay__link"><span class="menu-overlay__num">01</span> Home</a></li>
+      <li class="menu-overlay__item"><a href="cases.html" class="menu-overlay__link"><span class="menu-overlay__num">02</span> Cases</a></li>
+      <li class="menu-overlay__item"><a href="contact.html" class="menu-overlay__link"><span class="menu-overlay__num">03</span> Contact</a></li>
+    </ul>
+    <div class="menu-overlay__footer">
+      <div class="menu-overlay__socials">
+        <a href="#">GitHub</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">Twitter</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT SECTION -->
+  <section class="contact" id="contact">
+    <div class="dot-grid"></div>
+    <div class="contact__inner">
+      <p class="section-label reveal">Get in Touch</p>
+      <h1 class="contact__title reveal">
+        Let's <span class="accent">Talk</span>
+      </h1>
+
+      <div class="contact__grid">
+        <!-- Contact Form -->
+        <form class="contact__form reveal" id="contact-form" onsubmit="return false;">
+          <div>
+            <label class="input-label" for="contact-name">Name</label>
+            <input class="input" type="text" id="contact-name" name="name" placeholder="Your name" required>
+          </div>
+          <div>
+            <label class="input-label" for="contact-email">Email</label>
+            <input class="input" type="email" id="contact-email" name="email" placeholder="your@email.com" required>
+          </div>
+          <div>
+            <label class="input-label" for="contact-project">Project Type</label>
+            <input class="input" type="text" id="contact-project" name="project" placeholder="Web Development, WebGL, Design...">
+          </div>
+          <div>
+            <label class="input-label" for="contact-message">Message</label>
+            <textarea class="input" id="contact-message" name="message" rows="5" placeholder="Tell me about your project..." style="resize: vertical;"></textarea>
+          </div>
+          <button type="submit" class="btn-primary" style="padding: 12px 32px; align-self: flex-start;">
+            Send Message
+          </button>
+        </form>
+
+        <!-- Contact Info -->
+        <div class="contact__info reveal">
+          <div class="contact__info-item">
+            <h4>Email</h4>
+            <a href="mailto:hello@portfolio.dev">hello@portfolio.dev</a>
+          </div>
+          <div class="contact__info-item">
+            <h4>Location</h4>
+            <p>Remote / Worldwide</p>
+          </div>
+          <div class="contact__info-item">
+            <h4>Socials</h4>
+            <div class="social-links" style="margin-top: var(--space-2);">
+              <a href="#" target="_blank">GitHub</a>
+              <a href="#" target="_blank">LinkedIn</a>
+              <a href="#" target="_blank">Twitter</a>
+              <a href="#" target="_blank">Telegram</a>
+            </div>
+          </div>
+          <div class="contact__info-item">
+            <h4>Availability</h4>
+            <div style="display: flex; align-items: center; gap: var(--space-2); margin-top: var(--space-1);">
+              <span style="width: 8px; height: 8px; border-radius: 50%; background: #22c55e; display: inline-block;"></span>
+              <span style="font-size: var(--text-h2); font-weight: var(--weight-light); color: var(--color-white);">
+                Available for new projects
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__bottom">
+        <span class="footer__copy">© 2025 Portfolio. All rights reserved.</span>
+        <div class="footer__legal"><a href="#">Privacy Policy</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/cursor.js" defer></script>
+  <script src="js/loader.js" defer></script>
+  <script src="js/navigation.js" defer></script>
+  <script src="js/scroll-animations.js" defer></script>
+  <script>
+    // Form interaction feedback
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('contact-form');
+      if (form) {
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const btn = form.querySelector('.btn-primary');
+          btn.textContent = 'Message Sent ✓';
+          btn.style.background = '#22c55e';
+          setTimeout(() => {
+            btn.textContent = 'Send Message';
+            btn.style.background = '';
+            form.reset();
+          }, 3000);
+        });
+      }
+      // Init Lenis
+      setTimeout(() => {
+        if (typeof Lenis !== 'undefined') {
+          const lenis = new Lenis({ duration: 1.2, smooth: true, smoothTouch: false });
+          if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+            lenis.on('scroll', ScrollTrigger.update);
+            gsap.ticker.add((time) => lenis.raf(time * 1000));
+            gsap.ticker.lagSmoothing(0);
+          }
+        }
+      }, 100);
+    });
+  </script>
+</body>
+</html>

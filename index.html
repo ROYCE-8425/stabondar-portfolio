@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio — Front-End Developer</title>
+  <meta name="description" content="Creative Front-End Developer specializing in interactive web experiences, WebGL, 3D graphics, and motion design. Building high-performance websites with Three.js, GSAP, and modern frameworks.">
+  <meta property="og:title" content="Portfolio — Front-End Developer">
+  <meta property="og:description" content="Creative development, WebGL, Three.js, GSAP, and motion design.">
+  <meta property="og:type" content="website">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/pages.css">
+
+  <!-- GSAP + ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+
+  <!-- Three.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+
+  <!-- Lenis Smooth Scroll -->
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js" defer></script>
+</head>
+<body class="is-loading has-custom-cursor">
+
+  <!-- ═══════ CUSTOM CURSOR ═══════ -->
+  <div class="custom-cursor" id="custom-cursor"></div>
+
+  <!-- ═══════ LOADER ═══════ -->
+  <div class="loader" id="loader">
+    <div class="loader__text" id="loader-text">Developer</div>
+    <div class="loader__counter" id="loader-counter">0%</div>
+    <div class="loader__bar">
+      <div class="loader__bar-inner" id="loader-bar"></div>
+    </div>
+  </div>
+
+  <!-- ═══════ NAVIGATION ═══════ -->
+  <nav class="nav" id="nav">
+    <a href="index.html" class="nav__logo">Port<span>folio</span></a>
+    <div class="nav__actions">
+      <button class="link-pill" id="menu-toggle" aria-label="Open menu">Menu</button>
+      <a href="contact.html" class="link-pill--accent link-pill">Let's Talk</a>
+    </div>
+  </nav>
+
+  <!-- ═══════ MENU OVERLAY ═══════ -->
+  <div class="menu-overlay" id="menu-overlay">
+    <button class="menu-overlay__close" id="menu-close" aria-label="Close menu">✕</button>
+    <ul class="menu-overlay__list">
+      <li class="menu-overlay__item">
+        <a href="index.html" class="menu-overlay__link">
+          <span class="menu-overlay__num">01</span> Home
+        </a>
+      </li>
+      <li class="menu-overlay__item">
+        <a href="cases.html" class="menu-overlay__link">
+          <span class="menu-overlay__num">02</span> Cases
+        </a>
+      </li>
+      <li class="menu-overlay__item">
+        <a href="contact.html" class="menu-overlay__link">
+          <span class="menu-overlay__num">03</span> Contact
+        </a>
+      </li>
+    </ul>
+    <div class="menu-overlay__footer">
+      <div class="menu-overlay__socials">
+        <a href="#" target="_blank">GitHub</a>
+        <a href="#" target="_blank">LinkedIn</a>
+        <a href="#" target="_blank">Twitter</a>
+        <a href="#" target="_blank">Telegram</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════ HERO SECTION ═══════ -->
+  <section class="hero section--full" id="hero">
+    <canvas class="hero__canvas" id="hero-canvas"></canvas>
+    <div class="dot-grid"></div>
+
+    <div class="hero__content">
+      <p class="hero__greeting reveal">Hello, I'm</p>
+      <h1 class="hero__name">
+        <span class="line-mask"><span class="line-mask__inner">Creative</span></span><br>
+        <span class="line-mask"><span class="line-mask__inner"><span class="accent">Developer</span></span></span>
+      </h1>
+      <p class="hero__role reveal">Front-End · WebGL · Motion Design</p>
+      <div class="reveal" style="display: flex; gap: var(--space-3);">
+        <a href="cases.html" class="btn-primary">View Work</a>
+        <a href="contact.html" class="btn-ghost">Contact</a>
+      </div>
+    </div>
+
+    <div class="hero__outline-text" id="hero-outline" aria-hidden="true">DEVELOPER</div>
+
+    <div class="hero__scroll-indicator">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ═══════ PROJECTS SECTION (Horizontal Scroll) ═══════ -->
+  <section class="projects-section section" id="projects">
+    <div class="projects-section__header">
+      <p class="section-label">Selected Work</p>
+      <h2 class="projects-section__title">
+        Projects <span class="projects-section__count">(06)</span>
+      </h2>
+    </div>
+
+    <div class="horizontal-scroll" id="horizontal-scroll">
+      <!-- Project 01 -->
+      <div class="project-card" data-cursor-hover>
+        <div class="project-card__num">#01</div>
+        <div class="project-card__image-wrap">
+          <img class="project-card__image" src="assets/images/project-01.png" alt="E-Commerce Platform" id="project-img-1">
+        </div>
+        <div class="project-card__info">
+          <h3 class="project-card__title">E-Commerce Platform</h3>
+          <span class="project-card__tag">Web Development</span>
+        </div>
+      </div>
+
+      <!-- Project 02 -->
+      <div class="project-card" data-cursor-hover>
+        <div class="project-card__num">#02</div>
+        <div class="project-card__image-wrap">
+          <img class="project-card__image" src="assets/images/project-02.png" alt="3D Product Viewer" id="project-img-2">
+        </div>
+        <div class="project-card__info">
+          <h3 class="project-card__title">3D Product Viewer</h3>
+          <span class="project-card__tag">WebGL / Three.js</span>
+        </div>
+      </div>
+
+      <!-- Project 03 -->
+      <div class="project-card" data-cursor-hover>
+        <div class="project-card__num">#03</div>
+        <div class="project-card__image-wrap">
+          <img class="project-card__image" src="assets/images/project-03.png" alt="Agency Website" id="project-img-3">
+        </div>
+        <div class="project-card__info">
+          <h3 class="project-card__title">Agency Website</h3>
+          <span class="project-card__tag">Creative Development</span>
+        </div>
+      </div>
+
+      <!-- Project 04 -->
+      <div class="project-card" data-cursor-hover>
+        <div class="project-card__num">#04</div>
+        <div class="project-card__image-wrap">
+          <img class="project-card__image" src="assets/images/project-04.png" alt="Dashboard UI" id="project-img-4">
+        </div>
+        <div class="project-card__info">
+          <h3 class="project-card__title">Dashboard UI</h3>
+          <span class="project-card__tag">UI/UX Design</span>
+        </div>
+      </div>
+
+      <!-- Project 05 -->
+      <div class="project-card" data-cursor-hover>
+        <div class="project-card__num">#05</div>
+        <div class="project-card__image-wrap">
+          <img class="project-card__image" src="assets/images/project-05.png" alt="Mobile App" id="project-img-5">
+        </div>
+        <div class="project-card__info">
+          <h3 class="project-card__title">Mobile App</h3>
+          <span class="project-card__tag">React Native</span>
+        </div>
+      </div>
+
+      <!-- Project 06 -->
+      <div class="project-card" data-cursor-hover>
+        <div class="project-card__num">#06</div>
+        <div class="project-card__image-wrap">
+          <img class="project-card__image" src="assets/images/project-06.png" alt="Brand Identity" id="project-img-6">
+        </div>
+        <div class="project-card__info">
+          <h3 class="project-card__title">Brand Identity</h3>
+          <span class="project-card__tag">Design System</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ ABOUT SECTION ═══════ -->
+  <section class="section" id="about">
+    <div class="about">
+      <p class="section-label">About Me</p>
+      <p class="about__text reveal">
+        I'm a <span class="highlight">creative developer</span> with a passion for bringing ideas to life through 
+        design and technology. I specialize in building 
+        <span class="highlight">interactive web experiences</span> using WebGL, Three.js, GSAP, 
+        and modern front-end frameworks. Every project is an opportunity to push 
+        the boundaries of what's possible on the web.
+      </p>
+      <div class="about__stats stagger-children">
+        <div class="stat">
+          <div class="stat__number" data-counter="5">0</div>
+          <div class="stat__label">Years Experience</div>
+        </div>
+        <div class="stat">
+          <div class="stat__number" data-counter="50">0</div>
+          <div class="stat__label">Projects Completed</div>
+        </div>
+        <div class="stat">
+          <div class="stat__number" data-counter="30">0</div>
+          <div class="stat__label">Happy Clients</div>
+        </div>
+        <div class="stat">
+          <div class="stat__number" data-counter="12">0</div>
+          <div class="stat__label">Awards Won</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ MARQUEE ═══════ -->
+  <section class="marquee-section">
+    <div class="marquee">
+      <div class="marquee__inner">
+        <span class="marquee__text">Front-End <span class="dot">•</span> WebGL <span class="dot">•</span> Three.js <span class="dot">•</span> GSAP <span class="dot">•</span> Creative Dev <span class="dot">•</span>&nbsp;</span>
+        <span class="marquee__text">Front-End <span class="dot">•</span> WebGL <span class="dot">•</span> Three.js <span class="dot">•</span> GSAP <span class="dot">•</span> Creative Dev <span class="dot">•</span>&nbsp;</span>
+        <span class="marquee__text">Front-End <span class="dot">•</span> WebGL <span class="dot">•</span> Three.js <span class="dot">•</span> GSAP <span class="dot">•</span> Creative Dev <span class="dot">•</span>&nbsp;</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ AWARDS SECTION ═══════ -->
+  <section class="awards" id="awards">
+    <div class="awards__inner">
+      <p class="section-label" style="color: rgba(0,0,0,0.5);">Recognition</p>
+      <h2 class="awards__title">Awards &<br>Highlights</h2>
+      <div class="awards__list stagger-children">
+        <div class="awards__item">
+          <span class="awards__item-name">Awwwards — Site of the Day</span>
+          <span class="awards__item-year">2025</span>
+        </div>
+        <div class="awards__item">
+          <span class="awards__item-name">CSS Design Awards — Best UI</span>
+          <span class="awards__item-year">2024</span>
+        </div>
+        <div class="awards__item">
+          <span class="awards__item-name">FWA — Project of the Month</span>
+          <span class="awards__item-year">2024</span>
+        </div>
+        <div class="awards__item">
+          <span class="awards__item-name">Dribbble — Top Creator</span>
+          <span class="awards__item-year">2023</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ FOOTER ═══════ -->
+  <footer class="footer" id="footer">
+    <div class="footer__inner">
+      <div class="footer__top">
+        <h2 class="footer__cta-title">
+          Let's create something <span class="accent">amazing</span> together
+        </h2>
+        <div>
+          <a href="contact.html" class="btn-primary" style="padding: 12px 32px;">Get in Touch</a>
+        </div>
+      </div>
+
+      <div class="social-links" style="margin-bottom: var(--space-8);">
+        <a href="#" target="_blank">GitHub</a>
+        <a href="#" target="_blank">LinkedIn</a>
+        <a href="#" target="_blank">Twitter / X</a>
+        <a href="#" target="_blank">Telegram</a>
+        <a href="#" target="_blank">WhatsApp</a>
+      </div>
+
+      <div class="footer__bottom">
+        <span class="footer__copy">© 2025 Portfolio. All rights reserved.</span>
+        <div class="footer__legal">
+          <a href="#">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══════ SCRIPTS ═══════ -->
+  <script src="js/cursor.js" defer></script>
+  <script src="js/loader.js" defer></script>
+  <script src="js/navigation.js" defer></script>
+  <script src="js/three-scene.js" defer></script>
+  <script src="js/scroll-animations.js" defer></script>
+  <script src="js/horizontal-scroll.js" defer></script>
+  <script src="js/app.js" defer></script>
+</body>
+</html>
