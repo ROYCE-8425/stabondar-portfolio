@@ -11,8 +11,8 @@
   let scene, camera, renderer, particles, mouseX = 0, mouseY = 0;
   let animationId;
   const PARTICLE_COUNT = 1500;
-  const ACCENT_COLOR = new THREE.Color(0xEB4330);
-  const BASE_COLOR = new THREE.Color(0x312726);
+  const ACCENT_COLOR = new THREE.Color(0x00E5FF);
+  const BASE_COLOR = new THREE.Color(0x1a1a2e);
 
   function init() {
     // Scene
@@ -67,7 +67,7 @@
       size: 0.8,
       vertexColors: true,
       transparent: true,
-      opacity: 0.7,
+      opacity: 0.5,
       sizeAttenuation: true,
       blending: THREE.AdditiveBlending
     });

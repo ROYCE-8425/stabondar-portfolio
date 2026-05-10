@@ -113,6 +113,7 @@
 
 .hero__name .accent {
   color: var(--color-accent);
+  text-shadow: var(--glow-text-strong);
 }
 
 .hero__role {
@@ -132,13 +133,13 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: transparent;
-  -webkit-text-stroke: 1px var(--color-border);
-  text-stroke: 1px var(--color-border);
+  -webkit-text-stroke: 1px rgba(0, 229, 255, 0.15);
+  text-stroke: 1px rgba(0, 229, 255, 0.15);
   white-space: nowrap;
   overflow: hidden;
   opacity: 0.3;
   pointer-events: none;
-  z-index: 0;
+  z-index: 2;
 }
 
 .hero__scroll-indicator {
@@ -233,6 +234,7 @@
 
 .about__text .highlight {
   color: var(--color-accent);
+  text-shadow: var(--glow-text);
 }
 
 .about__stats {
@@ -245,11 +247,13 @@
 /* ══════════════ AWARDS / HIGHLIGHTS ══════════════ */
 
 .awards {
-  background: var(--color-accent);
-  color: var(--color-black);
+  background: linear-gradient(180deg, var(--color-bg-primary) 0%, var(--color-bg-tertiary) 50%, var(--color-bg-primary) 100%);
+  color: var(--color-text-primary);
   padding: var(--space-11) var(--container-padding);
   position: relative;
   overflow: hidden;
+  border-top: 1px solid var(--color-border-glow);
+  border-bottom: 1px solid var(--color-border-glow);
 }
 
 .awards__inner {
@@ -262,6 +266,8 @@
   font-weight: var(--weight-light);
   text-transform: uppercase;
   margin-bottom: var(--space-8);
+  color: var(--color-accent);
+  text-shadow: var(--glow-text);
 }
 
 .awards__list {
@@ -275,19 +281,32 @@
   justify-content: space-between;
   align-items: baseline;
   padding-bottom: var(--space-5);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid var(--color-border);
+  transition: border-color var(--transition-normal);
+}
+
+.awards__item:hover {
+  border-bottom-color: var(--color-border-glow);
 }
 
 .awards__item-name {
   font-size: var(--text-h1);
   font-weight: var(--weight-light);
   text-transform: uppercase;
+  transition: color var(--transition-fast), text-shadow var(--transition-fast);
+}
+
+.awards__item:hover .awards__item-name {
+  color: var(--color-accent);
+  text-shadow: var(--glow-text);
 }
 
 .awards__item-year {
+  font-family: var(--font-mono);
   font-size: var(--text-nav);
   font-weight: var(--weight-regular);
-  opacity: 0.6;
+  color: var(--color-accent);
+  opacity: 0.5;
 }
 
 /* ══════════════ MARQUEE ══════════════ */
@@ -349,6 +368,7 @@
 
 .footer__cta-title .accent {
   color: var(--color-accent);
+  text-shadow: var(--glow-text);
 }
 
 .footer__bottom {
@@ -395,6 +415,12 @@
   background: var(--color-bg-secondary);
   border: 1px solid var(--color-border);
   cursor: pointer;
+  transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.cases-grid__item:hover {
+  border-color: var(--color-border-glow);
+  box-shadow: var(--glow-md);
 }
 
 .cases-grid__item img {
@@ -473,6 +499,7 @@
 
 .contact__title .accent {
   color: var(--color-accent);
+  text-shadow: var(--glow-text-strong);
 }
 
 .contact__grid {
